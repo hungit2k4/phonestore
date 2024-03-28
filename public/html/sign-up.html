@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+  </head>
+  <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../stylesheets/sign-in-up.css">
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <img
+            src="https://logo.com/image-cdn/images/kts928pd/production/c25c42f92fb67b05204c687df7f7baff7c608e12-731x731.jpg?w=1080&q=72"
+            alt height="80">
+          <p>PhoneStore</p>
+        </div>
+        <div class="card-body">
+          <form id="signupForm">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Name"
+                name="name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Email"
+                name="email">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Phone number"
+                name="phoneNumber">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Username"
+                name="username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Password"
+                name="password">
+            </div>
+            <button type="button" class="btn btn-primary btn-block"
+              id="btn">SIGN UP</button>
+            <div id="error"></div>
+            <div class="d-flex justify-content-center">
+              <p>I have an account?</p>
+              <p id="signIn" style="color: #28a745;">Sign in</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="../javascripts/sign-up.js"></script>
+  </body>
+</html>

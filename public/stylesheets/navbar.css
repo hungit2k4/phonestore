@@ -1,0 +1,45 @@
+.bg-dark {
+    background: linear-gradient(to bottom, rgba(64, 64, 72, 1) 0%, rgba(32, 32, 33, 1) 100%);
+    min-height: 700px;
+    border-radius: 20px;
+}
+
+a {
+    color: white;
+}
+
+.nav-link {
+    padding: 10px 5px;
+    color: white;
+    border-radius: 15px;
+    margin: 2px;
+}
+
+.nav-link .row {
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav-link.active {
+    background-color: #28a745;
+}
+
+.nav-link.active:hover {
+    background-color: #28a745;
+}
+
+.nav-link:hover {
+    background-color: #535357;
+    color: white;
+}
+
+.material-symbols-outlined {
+    margin-right: 5px;
+}
+
+.bg-image {
+    background-image: url('https://example.com/mountain-lake.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
