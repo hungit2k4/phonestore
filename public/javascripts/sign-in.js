@@ -26,7 +26,7 @@ function signIn() {
         "email": email,
         "password": password
     }
-    const url = 'http://localhost:3000/api/user/login'; // Replace with the actual URL of your API endpoint
+    const url = 'https://phonestore-70pp.onrender.com/api/user/login'; // Replace with the actual URL of your API endpoint
 
     fetch(url, {
         method: 'post',
