@@ -14,7 +14,7 @@
     
     <body>
         <script type="module" src="../javascripts/middleware.js"></script>
-        <script> localStorage.setItem("navBar",0);</script>
+        <script>localStorage.setItem("navBar",1);</script>
         <div class="container-fluid">
             <div class="row">
                 <!-- navbar -->
@@ -30,13 +30,33 @@
                       
                       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                       
-                      <script src="../javascripts/index.js"></script>
+                      <script>
+                        const ctx = document.getElementById('myChart');
                       
+                        new Chart(ctx, {
+                          type: 'bar',
+                          data: {
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            datasets: [{
+                              label: '# of Votes',
+                              data: [12, 19, 3, 5, 2, 3],
+                              borderWidth: 1
+                            }]
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true
+                              }
+                            }
+                          }
+                        });
+                      </script>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="module" src="../javascripts/index.js"></script>
+
     </body>
 </html>

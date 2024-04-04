@@ -35,8 +35,8 @@ exports.uploadImage = async (req, res) => {
 }
 exports.getImageUser = async (req, res) => {
     try {
-        const id = req.params.id;
-        const image = await ImageUser.findOne({ _id: id });
+        const id_user = req.params.id_user;
+        const image = await ImageUser.findOne({ id_user: id_user });
         const imagePath = path.join(__dirname, '../public/' + image.src);
         await res.sendFile(imagePath);
         

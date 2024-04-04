@@ -1,12 +1,14 @@
+
+import { API_URL } from './url.js';
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 const phoneNumberRegex = /((09|03|07|08|05)+([0-9]{8}))/;
-const PasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%^&*])(?=.{8,})/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%^&*])(?=.{8,})/;
 const nameRegex = /^[a-zA-ZÀ-Ỹà-ỹ\s']+$/;
 const usernameRegex = /^[a-zA-Z0-9]+$/;
 
 var signIn = document.querySelector("#signIn");
 signIn.addEventListener("click", () => {
-  window.location.href = '../html/sign-in.html';
+  window.location.href = `${API_URL}/sign-in`;
 });
 var btn = document.querySelector("#btn");
 var form = document.querySelector("#signupForm");
@@ -26,7 +28,7 @@ btn.addEventListener("click", () => {
     return setError("invalid phone number");
   } else if (!usernameRegex.test(username)) {
     return setError("invalid username");
-  } else if (!PasswordRegex.test(password)) {
+  } else if (!passwordRegex.test(password)) {
     return setError("invalid password");
   } else {
     setError("");
@@ -39,7 +41,7 @@ btn.addEventListener("click", () => {
     email: email,
   };
 
-  const url = 'http://localhost:3000/api/user'; // Replace with the actual URL of your API endpoint
+  const url = `${API_URL}/api/user`; // Replace with the actual URL of your API endpoint
 
   fetch(url, {
     method: 'post',
@@ -52,8 +54,9 @@ btn.addEventListener("click", () => {
     .then(response => response.json())
     .then(data => {
       if (data.status == 400)
-       return alert(data.message);
+        return alert(data.message);
       alert("Create account succsetfully");
+      src.sendMail();
       cleanForm();
     })
     .catch(error => {

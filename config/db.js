@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const local = "mongodb://127.0.0.1:27017/ShopDB";
-const atlas = "mongodb+srv://hungit:<password>@cluster0.y5rj2ot.mongodb.net/";
+const atlas = "mongodb+srv://root:10012004@cluster0.y5rj2ot.mongodb.net/";
 // Kết nối đến cơ sở dữ liệu MongoDB
 const connect = async () => {
   try {
@@ -12,4 +12,4 @@ const connect = async () => {
     console.log('can not connect to db');
   }
 };
-module.exports = {connect};
+module.exports = { connect };

@@ -51,14 +51,22 @@ exports.updateUser = async (req, res) => {
     try {
 
         const updatedUser = await User.findOneAndUpdate({ _id: req.body.id }, { $set: req.body }, { new: true });
-
-        res.json({
-            status: 200,
-            message: "user updated successfully",
-            data: {
-                user: updatedUser
-            }
-        });
+        if (updatedUser){
+            res.json({
+                status: 200,
+                message: "user updated successfully",
+                data: {
+                    user: updatedUser
+                }
+            });
+        }else{
+            res.json({
+                status: 400,
+                message: "user update failed",
+               
+            });
+        }
+       
     } catch (error) {
         res.json({
             status: 401,
@@ -135,9 +143,11 @@ exports.login = async (req, res) => {
                 { email: req.body.email },
                 { phoneNumber: req.body.phoneNumber }
             ]
-        }, { _id: 1, role: 1, password: 1 })
+        })
+        console.log(user._id);
         if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
+                
                 return res.status(200).json(user);
             }
             return res.status(400).json({ message: "Username,email, phone number or password not match" });

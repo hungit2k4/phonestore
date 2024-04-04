@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.post('/', upload.single('avatar'), uploadController.uploadImage);
-router.get('/:id', uploadController.getImageUser);
+router.get('/:id_user', uploadController.getImageUser);
 router.delete('/:id', uploadController.delete);
 router.put('/', upload.single('avatar'), uploadController.updateImageUser);
 module.exports = router;

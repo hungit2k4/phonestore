@@ -17,14 +17,22 @@
             <hr style="background-color: white;">
             <div class="nav flex-column text-white">
                 <div style="margin: 5px;">MANAGEMENT</div>
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="#">
+                    <div class="row">
+                        <span
+                            class="material-symbols-outlined">dashboard</span>Dashboard
+                    </div>
+                </a>
+                <!-- Import navbar.js -->
+                <a class="nav-link" href="#">
                     <div class="row">
                         <span
                             class="material-symbols-outlined">account_circle</span>User
                         Profile
                     </div>
                 </a>
-                <a class="nav-link" href="#">
+
+                <a class="nav-link" href>
                     <div class="row">
                         <span class="material-symbols-outlined">
                             person
@@ -52,8 +60,17 @@
                         </span>Oder Management
                     </div>
                 </a>
+                <a class="nav-link" href="#">
+                    <div class="row">
+                        <span class="material-symbols-outlined">
+                            logout
+                        </span>Logout
+                    </div>
+                </a>
 
             </div>
         </div>
+        <script type="module" src="../javascripts/navbar.js"></script>
+
     </body>
 </html>

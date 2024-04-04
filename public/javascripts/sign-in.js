@@ -1,9 +1,12 @@
+import { API_URL } from './url.js';
+
 var signUp = document.querySelector('#signUp');
 signUp.addEventListener('click', () => {
-    window.location.href = '../html/sign-up.html';
+    window.location.href = `${API_URL}/sign-up`;
 })
 var form = document.querySelector("#signinForm");
-function signIn() {
+var btn= document.querySelector("#btn");
+btn.addEventListener('click',async () => {
     var formData = new FormData(form);
     var phoneNumber = parseInt(formData.get('username')) || 1;
     var username = formData.get('username');
@@ -26,9 +29,9 @@ function signIn() {
         "email": email,
         "password": password
     }
-    const url = 'http://localhost:3000/api/user/login'; // Replace with the actual URL of your API endpoint
+    const url = `${API_URL}/api/user/login`; // Replace with the actual URL of your API endpoint
 
-    fetch(url, {
+  await  fetch(url, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -42,7 +45,9 @@ function signIn() {
                 alert(data.message);
             }
              else if(data.role==1) {
-                window.location.href = '../html/index.html';
+                localStorage.setItem('userData', JSON.stringify(data));
+                localStorage.setItem('url',`${API_URL}`);
+                window.location.href = `${API_URL}`;
                 cleanForm();
             }else{
                 setError('You is not admin');
@@ -53,8 +58,8 @@ function signIn() {
         .catch(error => {
             console.error('Error:', error); // Handle errors
         });
+})
 
-}
 var setError = (err) => {
     document.querySelector('#error').innerHTML = err;
 }
