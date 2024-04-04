@@ -12,22 +12,22 @@ a.forEach((item, index) => {
                 parent.location.href = `${API_URL}`;
                 break;
             case 1:
-                parent.location.href = `${API_URL}/userprofile`;
+                parent.location.href = `${API_URL}userprofile`;
                 break;
             case 2:
-                parent.location.href = `${API_URL}/usermanager`;
+                parent.location.href = `${API_URL}usermanager`;
                 break;
             case 3:              
-                parent.location.href = `${API_URL}/categorymanager`;
+                parent.location.href = `${API_URL}categorymanager`;
                 break;
             case 4:               
-                parent.location.href = `${API_URL}/productmanager`;
+                parent.location.href = `${API_URL}productmanager`;
                 break;
             case 5:
-                parent.location.href = `${API_URL}/odermanager`;
+                parent.location.href = `${API_URL}odermanager`;
                 break;
             case 6:
-                parent.location.href = `${API_URL}/sign-in`;
+                parent.location.href = `${API_URL}sign-in`;
                 localStorage.removeItem('userData');
                 break;
         }
