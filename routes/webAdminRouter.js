@@ -23,10 +23,10 @@ router.get('/', function(req, res, next) {
   });
   router.get('/usermanager', function(req, res, next) {
     // Trả về file index.hbs khi truy cập trang chủ
-    res.sendFile(path.join(__dirname, '../public/html', 'usermanager.html'));
+    res.sendFile(path.join(__dirname, '../public/html', 'userManager.html'));
   });
   router.get('/productmanager', function(req, res, next) {
     // Trả về file index.hbs khi truy cập trang chủ
-    res.sendFile(path.join(__dirname, '../public/html', 'productmanager.html'));
+    res.sendFile(path.join(__dirname, '../public/html', 'productManager.html'));
   });
 module.exports = router;
