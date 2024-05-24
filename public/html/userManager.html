@@ -14,7 +14,7 @@
     
     <body>
         <script type="module" src="../javascripts/middleware.js"></script>
-        <script>localStorage.setItem("navBar",1);</script>
+        <script>localStorage.setItem("navBar",2);</script>
         <div class="container-fluid">
             <div class="row">
                 <!-- navbar -->
@@ -24,39 +24,48 @@
                 </div>
                 <!-- body -->
                 <div class="col-md-9">
-                    <div>
-                        <canvas id="myChart"></canvas>
-                      </div>
-                      
-                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                      
-                      <script>
-                        const ctx = document.getElementById('myChart');
-                      
-                        new Chart(ctx, {
-                          type: 'bar',
-                          data: {
-                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                            datasets: [{
-                              label: '# of Votes',
-                              data: [12, 19, 3, 5, 2, 3],
-                              borderWidth: 1
-                            }]
-                          },
-                          options: {
-                            scales: {
-                              y: {
-                                beginAtZero: true
-                              }
-                            }
-                          }
-                        });
-                      </script>
+                  <h1>Upload Files</h1>
+                  <input type="file" id="fileInput" multiple accept="image/*">
+                  <button id="uploadBtn">Upload</button>
+                  <div id="statusMessage"></div>                
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+             const fileInput = document.getElementById('fileInput');
+const uploadBtn = document.getElementById('uploadBtn');
+const statusMessage = document.getElementById('statusMessage');
 
+uploadBtn.addEventListener('click', async () => {
+  const files = fileInput.files;
+  if (files.length === 0) {
+    statusMessage.textContent = 'Please select files to upload.';
+    return;
+  }
+
+  const formData = new FormData();
+  for (const file of files) {
+    formData.append('image', file);
+  }
+  formData.append('id_product', '6612669ae0e0f05592364f1a');
+
+  try {
+    const response = await fetch('http://localhost:3000/api/uploadproduct', {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      statusMessage.textContent = 'Files uploaded successfully!';
+    } else {
+      statusMessage.textContent = `Error uploading files: ${response.status}`;
+    }
+  } catch (error) {
+    statusMessage.textContent = `Error uploading files: ${error.message}`;
+  }
+});
+        </script>
     </body>
 </html>

@@ -49,7 +49,11 @@ exports.createUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     try {
-
+        if (req.body.password) {
+            const salt = bcrypt.genSaltSync(10);
+            req.body.password = bcrypt.hashSync(req.body.password, salt);
+        }
+        
         const updatedUser = await User.findOneAndUpdate({ _id: req.body.id }, { $set: req.body }, { new: true });
         if (updatedUser){
             res.json({

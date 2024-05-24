@@ -5,7 +5,7 @@ const atlas = "mongodb+srv://root:10012004@cluster0.y5rj2ot.mongodb.net/";
 // Kết nối đến cơ sở dữ liệu MongoDB
 const connect = async () => {
   try {
-    await mongoose.connect(atlas);
+    await mongoose.connect(local);
     console.log("Connect to db success");
   } catch (error) {
     console.log(error);

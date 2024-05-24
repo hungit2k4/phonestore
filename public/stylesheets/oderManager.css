@@ -1,0 +1,152 @@
+body {
+    position: relative;
+    background-color: #f0f2f5;
+    padding: 10px;
+}
+
+#nav {
+    position: fixed;
+    max-width: 320px;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.body {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 10px;
+    min-height: 540px;
+    position: relative;
+}
+
+.bg {
+    background-color: rgb(21, 21, 21);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.bg:hover {
+    color: white;
+    background-color: rgb(21, 21, 21);
+    box-shadow: 2px 2px 4px black;
+}
+
+#search {
+    margin-right: 10px;
+    font-size: 15px;
+    width: 200px;
+}
+
+#btnSearch {
+    border-radius: 5px;
+    border: 0px;
+}
+
+#btnSearch::selection {
+    border-radius: 5px;
+    border: 0px;
+}
+
+th {
+    color: rgb(93, 93, 93);
+    font-size: 12px;
+}
+
+td {
+    font-size: 12px;
+}
+
+.model {
+    margin: 20px auto;
+    border-radius: 20px;
+}
+
+.material-symbols-outlined {
+    font-size: 20px;
+}
+
+.btn-sm {
+    width: 40px;
+    height: 30px;
+}
+
+#addProduct input {
+    width: 60%;
+    margin: 5px;
+}
+
+select {
+    width: 30%;
+}
+
+.btn-close {
+    background-color: red;
+    border: 0px white solid;
+    border-radius: 5px;
+    color: white;
+}
+
+#error {
+    color: red;
+}
+
+#btnCreate,
+#btnUpdate {
+    border-radius: 5px;
+    background-color: #28a785;
+    border: 0px;
+    color: white;
+    padding: 10px;
+
+}
+
+#delete {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    border: 0px solid white;
+}
+
+#cancel {
+    background-color: rgb(137, 231, 248);
+    color: white;
+    border-radius: 5px;
+    border: 0px;
+    border: 0px solid white;
+}
+
+#numberEntries {
+    width: 70px;
+}
+
+#pagination {
+    position: absolute;
+    bottom: 5px;
+    left: 25%;
+    text-align: center;
+}
+
+#pagination>button {
+    padding: 0px 10px;
+    border: 0px;
+    background-color: #d2d2d2;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+#page {
+    margin: 0px 20px;
+    text-align: center;
+    width: 50px;
+}
+
+#pagination>p {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 20px;
+}
+
+#pagination>button:hover {
+    background-color: #a4dcfc;
+}

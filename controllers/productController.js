@@ -3,7 +3,7 @@ exports.createProduct = async (req, res) => {
     try {
         const product = await Product.create(req.body);
         if (product) {
-            return res.status(200).json(product);
+            return res.status(200).json(product._id);
         }
         res.status(400).json({ message: "Create product failed" });
     } catch (error) {
@@ -85,6 +85,17 @@ exports.searchProduct = async (req, res) => {
         res.status(500).json({ message: 'Đã xảy ra lỗi khi tìm kiếm sản phẩm.' });
     }
 }
+exports.topProductNew = async (req, res) => {
+    try {
+        // Sử dụng phương thức find của model Product để lấy ra 10 sản phẩm mới nhất
+        const topNewProducts = await Product.find({},{name:1,quantity:1}).sort({ createdAt: -1 }).limit(10);
+        res.status(200).json(topNewProducts);
+    } catch (error) {
+        // Xử lý lỗi nếu có
+        console.error(error);
+        res.status(500).json({ message: 'Đã xảy ra lỗi khi tìm kiếm sản phẩm.' });
+    }
+};
 exports.updateProduct = async (req, res) => {
     try {
         const product = await Product.findByIdAndUpdate(req.body.id, req.body, { new: true });

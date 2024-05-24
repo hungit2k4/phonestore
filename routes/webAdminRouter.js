@@ -25,8 +25,16 @@ router.get('/', function(req, res, next) {
     // Trả về file index.hbs khi truy cập trang chủ
     res.sendFile(path.join(__dirname, '../public/html', 'userManager.html'));
   });
+  router.get('/categorymanager', function(req, res, next) {
+    // Trả về file index.hbs khi truy cập trang chủ
+    res.sendFile(path.join(__dirname, '../public/html', 'categoryManager.html'));
+  });
   router.get('/productmanager', function(req, res, next) {
     // Trả về file index.hbs khi truy cập trang chủ
     res.sendFile(path.join(__dirname, '../public/html', 'productManager.html'));
+  });
+  router.get('/odermanager', function(req, res, next) {
+    // Trả về file index.hbs khi truy cập trang chủ
+    res.sendFile(path.join(__dirname, '../public/html', 'oderManager.html'));
   });
 module.exports = router;

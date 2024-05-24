@@ -1,7 +1,7 @@
 import { API_URL } from './url.js';
 
 const PriceRegex = /^[0-9]+$/;
-const nameRegex = /^[a-zA-ZÀ-Ỹà-ỹ\s']+$/;
+const nameRegex = /^[a-zA-ZÀ-Ỹà-ỹ0-9\s']+$/;
 var tbody = document.querySelector('tbody');
 
 
@@ -30,7 +30,7 @@ var createRow = () => {
         // Tạo các cột td và đổ dữ liệu từ mảng vào
         create.innerHTML = `
             <td>${index + 1}</td>
-            <td><img src="" width="40" height="40" alt="Product Photo"></td>
+            <td><img src="${API_URL}/api/uploadproduct/image/${item._id}/0" width="40" height="40" alt="Product Photo"></td>
             <td>${item.name}</td>
             <td>${item.price}</td>
             <td>${item.quantity}</td>
@@ -137,15 +137,90 @@ btnAdd.addEventListener("click", async () => {
         .then(data => {
             if (data.status == 400)
                 return alert(data.message);
-            alert("Create product succsetfully");
+            var files = document.querySelector('#file').files;
+            if (files.length>0){
+                uploadimage(files,data);
+            }
             cleanForm();
+            cleanRow();
+            getProduct(10,1);   
+            
         })
         .catch(error => {
             console.error('Error:', error); // Handle errors
         });
-    cleanRow();
-    getProduct();
+    
 })
+document.getElementById('file').addEventListener('change', function() {
+    // Lấy danh sách các file đã chọn
+    var files = this.files;
+    // Biến kiểm tra xem có ít nhất một file không phải hình ảnh không
+    var nonImageFileDetected = false;
+    
+    // Kiểm tra số lượng file đã chọn
+    if (files.length > 5) {
+        alert('Vui lòng chọn tối đa 5 file');
+        this.value = ''; // Xóa các file đã chọn nếu vượt quá 5
+        return; // Kết thúc hàm nếu vượt quá 5 file
+    }
+
+    // Kiểm tra từng file trong danh sách
+    for (var i = 0; i < files.length; i++) {
+        // Lấy phần mở rộng của tên file
+        var fileName = files[i].name;
+        console.log(fileName);
+        var fileExtension = fileName.split('.').pop().toLowerCase();
+        
+        // Mảng các phần mở rộng của các định dạng hình ảnh phổ biến
+        var imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+
+        // Kiểm tra xem phần mở rộng của tệp có nằm trong danh sách các định dạng hình ảnh không
+        if (!imageExtensions.includes(fileExtension)) {
+            // Nếu không phải hình ảnh, đặt biến kiểm tra thành true
+            nonImageFileDetected = true;
+            // Xóa file không phải hình ảnh
+            files.splice(i, 1);
+            i--; // Giảm biến đếm để kiểm tra tiếp theo sau khi xóa file
+        }
+    }
+
+    // Nếu có ít nhất một file không phải hình ảnh, thông báo và xóa chúng khỏi danh sách
+    if (nonImageFileDetected) {
+        alert('Chỉ được chọn các file hình ảnh');
+        this.files = files;
+    }
+});
+
+var uploadimage = async (files,id_product) => {
+    
+    const formData = new FormData();
+    // Kiểm tra xem đã chọn file chưa
+    for (const file of files) {
+      formData.append('image', file);
+    }
+   
+        formData.append('id_product',id_product); // Thay thế `65f967bdc0cead64a66c06e9` bằng ID sản phẩm của bạn
+        try {
+            await fetch(`${API_URL}/api/uploadproduct`, {
+                method: 'POST',
+                body: formData,
+                enctype: 'multipart/form-data' // Thêm enctype vào đây
+            });
+            Swal.fire({
+                title: "Create!",
+                text: "Create Product Successfully",
+                icon: "success"
+            });
+            cleanForm();
+        } catch (error) {
+            console.log('Lỗi:', error);
+        }
+    cleanRow();
+    getProduct(10,1);
+    
+}
+
+
 
 
 var btnClickEvent = () => {
@@ -232,14 +307,49 @@ var updateProduct = async () => {
         .then(data => {
             if (data.status == 400)
                 return alert(data.message);
-            console.log(data);
-            alert("Update product succsetfully");
+            var file = document.getElementById('fileUpdate').files;
+            if (file.length > 0){
+                updateImage(file,id);
+            }
+            Swal.fire({
+                title: "Update!",
+                text: "Update Product Successfully",
+                icon: "success"
+            });
         })
         .catch(error => {
             console.error('Error:', error); // Handle errors
         });
     cleanRow();
     getProduct();
+}
+var updateImage = async (files,id_product) => {
+    
+    const formData = new FormData();
+    // Kiểm tra xem đã chọn file chưa
+    for (const file of files) {
+      formData.append('image', file);
+    }
+   
+        formData.append('id_product',id_product); // Thay thế `65f967bdc0cead64a66c06e9` bằng ID sản phẩm của bạn
+        try {
+            await fetch(`${API_URL}/api/uploadproduct`, {
+                method: 'PUT',
+                body: formData,
+                enctype: 'multipart/form-data' // Thêm enctype vào đây
+            });
+            Swal.fire({
+                title: "Update!",
+                text: "Update Product Successfully",
+                icon: "success"
+            });
+            cleanForm();
+        } catch (error) {
+            console.log('Lỗi:', error);
+        }
+    cleanRow();
+    getProduct(10,1);
+    
 }
 var deleteProduct = async (id) => {
 
@@ -248,20 +358,32 @@ var deleteProduct = async (id) => {
     })
         .then(response => response.json())
         .then(data => {
-            if (data) {
+            deleteImage(id);
+
+        })
+        .catch(error => {
+            console.error('Error:', error); // Handle errors
+        });
+}
+
+var deleteImage = async (id) => {
+    await fetch(`${API_URL}/api/uploadproduct/${id}`, {
+        method: 'delete',
+    })
+        .then(response => response.json())
+        .then(data => {
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",
                     icon: "success"
                 });
-            }
 
         })
         .catch(error => {
             console.error('Error:', error); // Handle errors
         });
     cleanRow();
-    getProduct();
+    getProduct(10,1);
 }
 var getCategory = async () => {
     await fetch(`${API_URL}/api/category`, {

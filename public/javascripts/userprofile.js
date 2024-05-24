@@ -20,35 +20,43 @@ username.value = user.username || "";
 document.querySelector('#img').src = `${API_URL}/api/uploaduser/${user._id}`;
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', async () => {
-  name = name.value;
-  phoneNumber = phoneNumber.value;
-  email = email.value;
-  address = address.value;
-  username = username.value;
+  
   var password = document.querySelector('input[name="password"]').value;
-  if (name && !nameRegex.test(name)) {
+  if (name.value && !nameRegex.test(name.value)) {
     return setError(`Invalid name`);
-  } else if (phoneNumber && !phoneNumberRegex.test(phoneNumber)) {
+  } else if (phoneNumber.value && !phoneNumberRegex.test(phoneNumber.value)) {
     return setError(`Invalid phone number`);
-  } else if (email && !emailRegex.test(email)) {
+  } else if (email.value && !emailRegex.test(email.value)) {
     return setError(`Invalid email`);
-  } else if (username && !usernameRegex.test(username)) {
+  } else if (username.value && !usernameRegex.test(username.value)) {
     return setError(`Invalid username`);
-  } else if (password && !passwordRegex.test(password)) {
+  } else if (password.value && !passwordRegex.test(password.value)) {
     return setError(`Invalid password`);
   } else {
     setError('');
   }
-
-  const data = {
-    id: user._id,
-    username: !username ? user.username : username,
-    password: !password ? user.password : password,
-    name: !name ? user.name : name,
-    phoneNumber: !phoneNumber ? user.phoneNumber : parseInt(phoneNumber),
-    email: !email ? user.email : email,
-    address: !address ? user.address : address
-  };
+  var data={};
+  if(password.length<=0) {
+    data = {
+      id: user._id,
+      username: !username.value ? user.username : username.value,
+      name: !name.value ? user.name : name.value,
+      phoneNumber: !phoneNumber.value ? user.phoneNumber : parseInt(phoneNumber.value),
+      email: !email.value ? user.email : email.value,
+      address: !address.value ? user.address : address.value
+    };
+  }else{
+    data = {
+      id: user._id,
+      username: !username.value ? user.username : username.value,
+      password:password,
+      name: !name.value ? user.name : name.value,
+      phoneNumber: !phoneNumber.value ? user.phoneNumber : parseInt(phoneNumber.value),
+      email: !email.value ? user.email : email.value,
+      address: !address.value ? user.address : address.value
+    };
+  }
+  
   fetch(`${API_URL}/api/user`, {
     method: 'put',
     headers: {

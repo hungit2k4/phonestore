@@ -1,6 +1,7 @@
 const ImageProduct = require('../models/imageProduct');
 const path = require('path');
 const fs = require('fs');
+const { log } = require('console');
 
 exports.createImageProduct = async (req, res) => {
     try {
@@ -13,7 +14,8 @@ exports.createImageProduct = async (req, res) => {
 exports.getImageProduct = async (req, res) => {
     try {
         const id = req.params.id;
-        const image = await ImageProduct.findOne({ _id: id }, { _id: 0, src: 1 });
+        const index = parseInt(req.params.index);
+        const image = await ImageProduct.find({ id_product: id }, { _id: 0, src: 1 });
         if (!image) {
             return res.status(404).json(
                 {
@@ -21,7 +23,7 @@ exports.getImageProduct = async (req, res) => {
                 }
             )
         }
-        const imagePath = path.join(__dirname, '../public/' + image.src);
+        const imagePath = path.join(__dirname, '../public/' + image[index].src);
         res.sendFile(imagePath);
     } catch (error) {
         res.status(500).json({
@@ -48,7 +50,7 @@ exports.getIdImageProduct = async (req, res) => {
 exports.updateImageProduct = async (req, res) => {
     try {
         const id_product = req.body.id_product;
-       await deleteImages(res, id_product,);
+        await deleteImages(res, id_product);
         await ImageProduct.deleteMany({ id_product: id_product });
         await uploadImages(req, res);
     } catch (error) {
@@ -75,24 +77,28 @@ exports.deleteImages = async (req, res) => {
 
 var uploadImages = async (req, res) => {
     var imageProduct = [];
+    console.log(req.id_product);
     const { files } = req;
-    const urls = files.map((file) => `uploads/${file.filename}`)
-    const promises = urls.map(async (item) => {
-        var newImage = new ImageProduct({
-            src: item,
-            id_product: req.body.id_product
+    if (files) {
+        const urls = files.map((file) => `uploads/${file.filename}`)
+        const promises = urls.map(async (item) => {
+            var newImage = new ImageProduct({
+                src: item,
+                id_product: req.body.id_product
+            });
+            imageProduct.push(await newImage.save());
         });
-        imageProduct.push(await newImage.save());
-    });
-    await Promise.all(promises);
-    res.status(200).json(imageProduct);
+        await Promise.all(promises);
+        res.status(200).json(imageProduct);
+    }
+
 }
 var deleteImages = async (res, id_product) => {
     const src = await ImageProduct.find({ id_product: id_product }, { src: 1 });
-    if (src.length ==0) {
-        return res.status(400).json({
-            error: 'id product not found'
-        });
+    if (src.length == 0) {
+        // return res.status(400).json({
+        //     error: 'id product not found'
+        // });
     }
     src.map((item) => {
         const filePath = path.join(__dirname, '../public/' + item.src);

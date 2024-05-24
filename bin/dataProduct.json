@@ -1,0 +1,23 @@
+[
+    { "name": "iPhone 12 Pro", "quantity": 50, "price": 10000000, "status": 1, "description": "Điện thoại iPhone 12 Pro", "id_category": "60f967bdc0cead64a66c06e1", "createdAt": "2024-04-07T12:00:00Z" },
+    { "name": "Samsung Galaxy S21 Ultra", "quantity": 30, "price": 15000000, "status": 1, "description": "Điện thoại Samsung Galaxy S21 Ultra", "id_category": "60f967bdc0cead64a66c06e2", "createdAt": "2024-04-07T12:30:00Z" },
+    { "name": "Xiaomi Redmi Note 10", "quantity": 20, "price": 5000000, "status": 1, "description": "Điện thoại Xiaomi Redmi Note 10", "id_category": "60f967bdc0cead64a66c06e3", "createdAt": "2024-04-07T13:00:00Z" },
+    { "name": "OnePlus 9 Pro", "quantity": 40, "price": 14000000, "status": 1, "description": "Điện thoại OnePlus 9 Pro", "id_category": "60f967bdc0cead64a66c06e4", "createdAt": "2024-04-07T13:30:00Z" },
+    { "name": "Google Pixel 6 Pro", "quantity": 35, "price": 16000000, "status": 1, "description": "Điện thoại Google Pixel 6 Pro", "id_category": "60f967bdc0cead64a66c06e5", "createdAt": "2024-04-07T14:00:00Z" },
+    { "name": "Huawei P40 Pro", "quantity": 25, "price": 12000000, "status": 1, "description": "Điện thoại Huawei P40 Pro", "id_category": "60f967bdc0cead64a66c06e6", "createdAt": "2024-04-07T14:30:00Z" },
+    { "name": "Sony Xperia 1 II", "quantity": 60, "price": 17000000, "status": 1, "description": "Điện thoại Sony Xperia 1 II", "id_category": "60f967bdc0cead64a66c06e7", "createdAt": "2024-04-07T15:00:00Z" },
+    { "name": "LG V60 ThinQ", "quantity": 45, "price": 13000000, "status": 1, "description": "Điện thoại LG V60 ThinQ", "id_category": "60f967bdc0cead64a66c06e8", "createdAt": "2024-04-07T15:30:00Z" },
+    { "name": "Asus ROG Phone 5", "quantity": 55, "price": 19000000, "status": 1, "description": "Điện thoại Asus ROG Phone 5", "id_category": "60f967bdc0cead64a66c06e9", "createdAt": "2024-04-07T16:00:00Z" },
+    { "name": "Realme GT 5G", "quantity": 70, "price": 8000000, "status": 1, "description": "Điện thoại Realme GT 5G", "id_category": "60f967bdc0cead64a66c06e1", "createdAt": "2024-04-07T16:30:00Z" },
+    { "name": "Nokia X20", "quantity": 80, "price": 10000000, "status": 1, "description": "Điện thoại Nokia X20", "id_category": "60f967bdc0cead64a66c06e2", "createdAt": "2024-04-07T17:00:00Z" },
+    { "name": "Motorola Edge Plus", "quantity": 90, "price": 11000000, "status": 1, "description": "Điện thoại Motorola Edge Plus", "id_category": "60f967bdc0cead64a66c06e3", "createdAt": "2024-04-07T17:30:00Z" },
+    { "name": "Vivo X60 Pro+", "quantity": 100, "price": 20000000, "status": 1, "description": "Điện thoại Vivo X60 Pro+", "id_category": "60f967bdc0cead64a66c06e4", "createdAt": "2024-04-07T18:00:00Z" },
+    { "name": "Oppo Find X3 Pro", "quantity": 120, "price": 18000000, "status": 1, "description": "Điện thoại Oppo Find X3 Pro", "id_category": "60f967bdc0cead64a66c06e5", "createdAt": "2024-04-07T18:30:00Z" },
+    { "name": "Lenovo Legion Phone Duel 2", "quantity": 110, "price": 22000000, "status": 1, "description": "Điện thoại Lenovo Legion Phone Duel 2", "id_category": "60f967bdc0cead64a66c06e6", "createdAt": "2024-04-07T19:00:00Z" },
+    { "name": "ZTE Axon 30 Ultra", "quantity": 95, "price": 16000000, "status": 1, "description": "Điện thoại ZTE Axon 30 Ultra", "id_category": "60f967bdc0cead64a66c06e7", "createdAt": "2024-04-07T19:30:00Z" },
+    { "name": "Poco X3 Pro", "quantity": 85, "price": 9000000, "status": 1, "description": "Điện thoại Poco X3 Pro", "id_category": "60f967bdc0cead64a66c06e8", "createdAt": "2024-04-07T20:00:00Z" },
+    { "name": "BlackBerry Key2", "quantity": 75, "price": 8000000, "status": 1, "description": "Điện thoại BlackBerry Key2", "id_category": "60f967bdc0cead64a66c06e9", "createdAt": "2024-04-07T20:30:00Z" },
+    { "name": "HTC U12 Plus", "quantity": 65, "price": 7000000, "status": 1, "description": "Điện thoại HTC U12 Plus", "id_category": "60f967bdc0cead64a66c06e1", "createdAt": "2024-04-07T21:00:00Z" },
+    { "name": "Alcatel 1S (2020)", "quantity": 50, "price": 5000000, "status": 1, "description": "Điện thoại Alcatel 1S (2020)", "id_category": "60f967bdc0cead64a66c06e2", "createdAt": "2024-04-07T21:30:00Z" }
+  ]
+  

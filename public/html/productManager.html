@@ -16,7 +16,7 @@
 
   <body>
     <script type="module" src="../javascripts/middleware.js"></script>
-    <script>localStorage.setItem("navBar",3);</script>
+    <script>localStorage.setItem("navBar",4);</script>
     <div class="container-fluid">
       <div class="row">
         <!-- navbar -->
@@ -101,8 +101,11 @@
               <div class="form-group">
                 <label for="category">Category</label>
                 <select id="category" class="form-control">
-                  
                 </select>
+              </div>
+              <div class="form-group">
+                <label for="category">Image</label>
+                <input type="file" id="file" multiple accept="image/*">
               </div>
             </form>
             <div id="error"></div>
@@ -165,6 +168,11 @@
                 <select id="categoryUpdate" class="form-control">
                   
                 </select>
+                
+              </div>
+              <div class="form-group">
+                <label for="category">Image</label>
+                <input type="file" id="fileUpdate" multiple accept="image/*">
               </div>
             </form>
             <div id="error"></div>
