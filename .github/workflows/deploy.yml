@@ -21,16 +21,3 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-
-    - name: Deploy to server
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        SERVER: ${{ secrets.SERVER }}
-        USER: ${{ secrets.USER }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.SERVER }} "mkdir -p /path/to/your/app"
-        rsync -avz --delete-after ./ ${{ secrets.USER }}@${{ secrets.SERVER }}:/path/to/your/app
-        ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.SERVER }} "cd /path/to/your/app && npm install && pm2 restart all || pm2 start app.js --name your-app"
